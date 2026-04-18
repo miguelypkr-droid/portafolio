@@ -58,11 +58,17 @@ document.addEventListener('mouseup', () => {
                         dragRect.right <= rect.right && 
                         dragRect.top >= rect.top && 
                         dragRect.bottom <= rect.bottom;
-        
-        if (isInside) {
-            dropZone.style.border = 'none';
-        } else {
-            dropZone.style.border = '2px dashed #ccc';
-        }
     }
 });
+
+const aboutArrow = document.querySelector('.about-arrow');
+const aboutDetails = document.querySelector('.about-details');
+
+if (aboutArrow && aboutDetails) {
+    aboutArrow.addEventListener('click', () => {
+        const isOpen = aboutDetails.classList.toggle('show');
+        aboutArrow.classList.toggle('open', isOpen);
+        aboutArrow.setAttribute('aria-expanded', isOpen);
+        aboutDetails.setAttribute('aria-hidden', !isOpen);
+    });
+}
