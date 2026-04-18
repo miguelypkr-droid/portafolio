@@ -2,8 +2,35 @@
 <html>
 <head>
     <title>Hola Mundo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: white;
+            padding: 60px 80px;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="main-container">
+        <h1>Hola Mundo</h1>
+    </div>
 </body>
 </html>
