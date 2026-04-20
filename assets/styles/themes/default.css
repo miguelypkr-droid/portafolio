@@ -1,0 +1,20 @@
+:root {
+    --about-border-base: rgba(15, 23, 42, 0.08);
+    --about-border-glow: var(--text-strong);
+    --about-border-soft: rgba(96, 165, 250, 0.28);
+    --panel-bg: #2b313d;
+    --panel-bg-alt: #232933;
+    --text-strong: #8fd3ff;
+    --text-small: #ffffff;
+    --theme-button-bg: rgba(143, 211, 255, 0.12);
+    --theme-button-border: rgba(143, 211, 255, 0.35);
+    --theme-button-shadow: rgba(143, 211, 255, 0.18);
+    --body-bg: #f0f0f0;
+    --body-overlay: radial-gradient(circle at top, rgba(143, 211, 255, 0.16), transparent 30%);
+    --panel-inset: rgba(143, 211, 255, 0.1);
+    --panel-border: rgba(143, 211, 255, 0.12);
+    --title-border: rgba(143, 211, 255, 0.65);
+    --arrow-border: rgba(143, 211, 255, 0.35);
+    --arrow-bg: rgba(255, 255, 255, 0.03);
+    --separator-color: rgba(143, 211, 255, 0.65);
+}

@@ -1,0 +1,17 @@
+body.vaporwave-theme {
+    --panel-bg: #351c56;
+    --panel-bg-alt: #24103e;
+    --text-strong: #ff8de1;
+    --text-small: #f9ecff;
+    --theme-button-bg: rgba(255, 141, 225, 0.14);
+    --theme-button-border: rgba(255, 141, 225, 0.42);
+    --theme-button-shadow: rgba(255, 141, 225, 0.3);
+    --body-bg: linear-gradient(135deg, #1a1034 0%, #221450 45%, #0d1c4f 100%);
+    --body-overlay: radial-gradient(circle at top, rgba(255, 130, 218, 0.28), transparent 32%);
+    --panel-inset: rgba(255, 141, 225, 0.14);
+    --panel-border: rgba(255, 141, 225, 0.2);
+    --title-border: rgba(255, 141, 225, 0.68);
+    --arrow-border: rgba(255, 141, 225, 0.42);
+    --arrow-bg: rgba(255, 255, 255, 0.05);
+    --separator-color: rgba(255, 141, 225, 0.68);
+}

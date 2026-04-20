@@ -1,0 +1,33 @@
+.top-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.drop-zone {
+    border: none;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: var(--panel-bg);
+    min-width: 0;
+    flex: 1 1 auto;
+    box-shadow: inset 0 0 0 1px var(--panel-inset);
+}
+
+@media (max-width: 1080px) {
+    .top-row {
+        flex-wrap: wrap;
+    }
+
+    .contact-card,
+    .about-card {
+        max-width: none;
+        flex-basis: 100%;
+    }
+
+    .drop-zone {
+        min-width: 0;
+    }
+}

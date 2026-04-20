@@ -1,31 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Hola Mundo</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel Angel Garcia Aguilar | Portafolio Web y SEO</title>
+    <meta name="description" content="Portafolio de Miguel Angel Garcia Aguilar, diseñador y desarrollador web con experiencia en CSS, HTML, JavaScript, Liquid y optimización SEO.">
+    <meta name="author" content="Miguel Angel Garcia Aguilar">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#232933">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CO">
+    <meta property="og:title" content="Miguel Angel Garcia Aguilar | Portafolio Web y SEO">
+    <meta property="og:description" content="Portafolio web interactivo con información de contacto, experiencia en desarrollo frontend y enfoque en SEO.">
+    <meta property="og:site_name" content="Portafolio de Miguel Angel Garcia Aguilar">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Miguel Angel Garcia Aguilar | Portafolio Web y SEO">
+    <meta name="twitter:description" content="Portafolio web interactivo de Miguel Angel Garcia Aguilar con enfoque en diseño frontend y SEO.">
+    <link rel="stylesheet" href="assets/styles/themes/default.css">
+    <link rel="stylesheet" href="assets/styles/themes/vaporwave.css">
+    <link rel="stylesheet" href="assets/styles/base.css">
+    <link rel="stylesheet" href="assets/styles/layout.css">
+    <link rel="stylesheet" href="assets/styles/components.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Miguel Angel Garcia Aguilar",
+            "jobTitle": "Desarrollador y disenador web",
+            "email": "mailto:miguelykfr@gmail.com",
+            "telephone": "+57 305 3356460",
+            "description": "Desarrollador web con experiencia en CSS, HTML, JavaScript, Liquid y SEO.",
+            "knowsAbout": ["SEO", "CSS", "HTML", "JavaScript", "Liquid", "Diseno web"]
+        }
+    </script>
 </head>
 <body>
-    <div class="main-container">
-        <div class="top-row">
-            <div class="drop-zone">
-                <div id="draggable" style="margin: 0; font-family: sans-serif; white-space: nowrap;">
+    <main class="main-container">
+        <header class="top-row">
+            <section class="drop-zone" data-dev-panel="identity" data-dev-feature="draggable-name-and-theme-tools" aria-labelledby="site-title">
+                <h1 id="draggable" style="margin: 0; font-family: sans-serif; white-space: nowrap;">
                     <span style="font-size: 2em;">M</span><span style="font-size: 2em;">i</span><span style="font-size: 2em;">g</span><span style="font-size: 2em;">u</span><span style="font-size: 2em;">e</span><span style="font-size: 2em;">l</span> <span style="font-size: 2em;">A</span><span style="font-size: 2em;">n</span><span style="font-size: 2em;">g</span><span style="font-size: 2em;">e</span><span style="font-size: 2em;">l</span> <span style="font-size: 2em;">G</span><span style="font-size: 2em;">a</span><span style="font-size: 2em;">r</span><span style="font-size: 2em;">c</span><span style="font-size: 2em;">i</span><span style="font-size: 2em;">a</span> <span style="font-size: 2em;">A</span><span style="font-size: 2em;">g</span><span style="font-size: 2em;">u</span><span style="font-size: 2em;">i</span><span style="font-size: 2em;">l</span><span style="font-size: 2em;">a</span><span style="font-size: 2em;">r</span>
+                </h1>
+                <p class="interactive-tools-p">Portafolio web interactivo enfocado en desarrollo frontend, diseno visual y optimizacion SEO.</p>
+                <section class="interactive-tools" data-dev-panel="interactive-tools" data-dev-feature="theme-switches" aria-labelledby="interactive-tools-title">
+                    <h2 id="interactive-tools-title" class="interactive-tools-title">Funciones interactivas:</h2>
+                    <p class="interactive-tools-p">Prueba themes que cambian el estilo de la pagina y muestran parte de la interactividad que puedo desarrollar.</p>
+                    <button type="button" class="theme-toggle-button" aria-pressed="false" data-dev-action="toggle-vaporwave-theme">VaporWave</button>
+                </section>
+            </section>
+            <section class="contact-card" data-dev-panel="contact-card" data-dev-feature="collapsible-contact-panel" aria-labelledby="contact-title">
+                <svg class="about-border-trace" viewBox="0 0 320 220" preserveAspectRatio="none" aria-hidden="true">
+                    <rect class="about-border-trace-path" x="1" y="1" width="318" height="218" rx="20" ry="20" pathLength="100"></rect>
+                </svg>
+                <div class="card-header">
+                    <h2 id="contact-title" class="contact-title">Contacto</h2>
+                    <button type="button" class="card-arrow" aria-expanded="false" aria-controls="contact-details" aria-label="Abrir o cerrar contacto" title="Abrir o cerrar contacto">▼</button>
                 </div>
-            </div>
-            <div class="about-card">
-                <div class="about-header">
-                    <div class="about-title">Sobre mi:</div>
-                    <button type="button" class="about-arrow" aria-expanded="false">▼</button>
+                <div id="contact-details" class="contact-details card-details" aria-hidden="true">
+                    <p>Correo: <a href="mailto:miguelykfr@gmail.com">miguelykfr@gmail.com</a></p>
+                    <p>Numero: <a href="tel:+573053356460">+57 305 3356460</a></p>
                 </div>
-                <div class="about-details" aria-hidden="true">
-                    Soy una persona con un alto nivel de imaginación, diseñador de CSS, experimentado en el uso de SEO, y capaz de hacer todo lo que su solicitud web desee.
+            </section>
+            <section class="about-card" data-dev-panel="about-card" data-dev-feature="collapsible-about-panel" aria-labelledby="about-title">
+                <svg class="about-border-trace" viewBox="0 0 320 220" preserveAspectRatio="none" aria-hidden="true">
+                    <rect class="about-border-trace-path" x="1" y="1" width="318" height="218" rx="20" ry="20" pathLength="100"></rect>
+                </svg>
+                <div class="card-header">
+                    <h2 id="about-title" class="about-title">Sobre mi</h2>
+                    <button type="button" class="card-arrow" aria-expanded="false" aria-controls="about-details" aria-label="Abrir o cerrar sobre mi" title="Abrir o cerrar sobre mi">▼</button>
                 </div>
-            </div>
-        </div>
+                <div id="about-details" class="about-details card-details" aria-hidden="true">
+                    Soy una persona con un alto nivel de imaginación; soy un artista en CSS, escritor en HTML, mago en JavaScript, y un arquitecto en Liquid. Experimentador en el uso del SEO, y capaz de hacer todo lo que su solicitud web desee.
+                </div>
+            </section>
+        </header>
         <div class="separator"></div>
-        <p style="font-family: sans-serif; text-align: center; ">Bienbenido a mi website de pru</p>
-    </div>
+        <section aria-labelledby="portfolio-summary-title">
+            <h2 id="portfolio-summary-title" class="visually-hidden">Resumen del portafolio</h2>
+            <p style="font-family: sans-serif; text-align: center; ">Bienvenido a mi portafolio web interactivo, donde presento mis habilidades en desarrollo frontend, diseno visual y posicionamiento SEO.</p>
+        </section>
+    </main>
     
-    <script src="script.js"></script>
+    <script src="assets/scripts/main.js"></script>
 </body>
 </html>
