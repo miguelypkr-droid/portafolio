@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
 body.vaporwave-theme {
+    isolation: isolate;
     --panel-bg: #351c56;
     --panel-bg-alt: #24103e;
     --text-strong: #ff8de1;
@@ -7,11 +10,189 @@ body.vaporwave-theme {
     --theme-button-border: rgba(255, 141, 225, 0.42);
     --theme-button-shadow: rgba(255, 141, 225, 0.3);
     --body-bg: linear-gradient(135deg, #1a1034 0%, #221450 45%, #0d1c4f 100%);
-    --body-overlay: radial-gradient(circle at top, rgba(255, 130, 218, 0.28), transparent 32%);
+    --body-overlay:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px 26px) top left / 240px 240px no-repeat,
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px 26px) top left / 240px 240px no-repeat,
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px 26px) top right / 240px 240px no-repeat,
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px 26px) top right / 240px 240px no-repeat,
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px 26px) bottom left / 240px 240px no-repeat,
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px 26px) bottom left / 240px 240px no-repeat,
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px 26px) bottom right / 240px 240px no-repeat,
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px 26px) bottom right / 240px 240px no-repeat,
+        radial-gradient(circle at top, rgba(255, 130, 218, 0.28), transparent 32%);
     --panel-inset: rgba(255, 141, 225, 0.14);
     --panel-border: rgba(255, 141, 225, 0.2);
     --title-border: rgba(255, 141, 225, 0.68);
     --arrow-border: rgba(255, 141, 225, 0.42);
     --arrow-bg: rgba(255, 255, 255, 0.05);
     --separator-color: rgba(255, 141, 225, 0.68);
+    --vaporwave-font: 'Silkscreen', 'Courier New', monospace;
+}
+
+.vaporwave-sun {
+    position: fixed;
+    left: 50%;
+    top: 0.85rem;
+    z-index: 0;
+    width: min(34vw, 360px);
+    aspect-ratio: 1 / 1;
+    transform: translate(-50%, 5.8rem);
+    transform-origin: center center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.vaporwave-sun-image {
+    position: absolute;
+    inset: 0;
+    background: url('../../images/vaporwave/vaporwavesun.webp') center / contain no-repeat;
+    filter: drop-shadow(0 0 24px rgba(255, 141, 225, 0.2));
+}
+
+.vaporwave-sun-glow {
+    position: absolute;
+    left: 50%;
+    top: 5.4rem;
+    width: min(42vw, 440px);
+    height: min(20vw, 180px);
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(255, 112, 196, 0.16), transparent 68%);
+    filter: blur(18px);
+    opacity: 0;
+}
+
+body.vaporwave-theme .vaporwave-sun {
+    opacity: 0.96;
+    pointer-events: auto;
+    cursor: grab;
+    animation: vaporwaveSunRise 1.7s cubic-bezier(0.2, 0.9, 0.22, 1) forwards;
+}
+
+body.vaporwave-theme .vaporwave-sun-image {
+    animation: vaporwaveSunFloat 4.8s ease-in-out 1.7s infinite alternate;
+}
+
+body.vaporwave-theme .vaporwave-sun-glow {
+    opacity: 1;
+    animation: vaporwaveSunGlow 4.8s ease-in-out 1.7s infinite alternate;
+}
+
+body.vaporwave-theme .vaporwave-sun.is-dragging {
+    cursor: grabbing;
+}
+
+body.vaporwave-theme .vaporwave-sun.is-manual {
+    opacity: 0.96;
+    animation: none;
+}
+
+body.vaporwave-theme .vaporwave-sun.is-manual .vaporwave-sun-image {
+    animation: vaporwaveSunFloatManual 4.8s ease-in-out infinite alternate;
+}
+
+body.vaporwave-theme .vaporwave-sun.is-manual .vaporwave-sun-glow {
+    animation: vaporwaveSunGlowManual 4.8s ease-in-out infinite alternate;
+}
+
+body.vaporwave-theme .main-container,
+body.vaporwave-theme .drop-zone,
+body.vaporwave-theme .contact-card,
+body.vaporwave-theme .about-card,
+body.vaporwave-theme .theme-toggle-button,
+body.vaporwave-theme .card-arrow {
+    border-radius: 0;
+}
+
+body.vaporwave-theme #draggable,
+body.vaporwave-theme .interactive-tools-title,
+body.vaporwave-theme .interactive-tools-p,
+body.vaporwave-theme .theme-toggle-button,
+body.vaporwave-theme .contact-title,
+body.vaporwave-theme .about-title,
+body.vaporwave-theme .contact-details,
+body.vaporwave-theme .about-details,
+body.vaporwave-theme .card-arrow,
+body.vaporwave-theme .separator,
+body.vaporwave-theme #portfolio-summary-title,
+body.vaporwave-theme .main-container > section p {
+    font-family: var(--vaporwave-font);
+}
+
+body.vaporwave-theme #draggable .letter,
+body.vaporwave-theme .interactive-tools-title,
+body.vaporwave-theme .theme-toggle-button,
+body.vaporwave-theme .contact-title,
+body.vaporwave-theme .about-title {
+    text-shadow: 0 0 10px rgba(255, 141, 225, 0.45), 0 0 22px rgba(116, 203, 255, 0.18);
+    letter-spacing: 0.05em;
+}
+
+body.vaporwave-theme .interactive-tools-p,
+body.vaporwave-theme .contact-details,
+body.vaporwave-theme .about-details,
+body.vaporwave-theme .main-container > section p {
+    letter-spacing: 0.03em;
+}
+
+body.vaporwave-theme .theme-toggle-button,
+body.vaporwave-theme .card-arrow {
+    box-shadow: none;
+}
+
+body.vaporwave-theme .contact-card,
+body.vaporwave-theme .about-card,
+body.vaporwave-theme .drop-zone,
+body.vaporwave-theme .main-container {
+    box-shadow: 10px 10px 0 rgba(11, 6, 33, 0.28);
+}
+
+@keyframes vaporwaveSunRise {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 7.5rem);
+    }
+    100% {
+        opacity: 0.96;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes vaporwaveSunFloat {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0.7rem);
+    }
+}
+
+@keyframes vaporwaveSunFloatManual {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0.7rem);
+    }
+}
+
+@keyframes vaporwaveSunGlow {
+    0% {
+        opacity: 0.35;
+        transform: translateX(-50%) scale(0.96);
+    }
+    100% {
+        opacity: 0.7;
+        transform: translateX(-50%) scale(1.04);
+    }
+}
+
+@keyframes vaporwaveSunGlowManual {
+    0% {
+        opacity: 0.35;
+        transform: translateX(-50%) translateY(0) scale(0.96);
+    }
+    100% {
+        opacity: 0.7;
+        transform: translateX(-50%) translateY(0.7rem) scale(1.04);
+    }
 }

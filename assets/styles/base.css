@@ -5,6 +5,7 @@
 }
 
 body {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +20,8 @@ body.theme-transitioning {
 }
 
 .main-container {
+    position: relative;
+    z-index: 1;
     width: min(96vw, 1480px);
     max-width: 1480px;
     background-color: var(--panel-bg-alt);

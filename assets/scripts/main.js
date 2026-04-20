@@ -5,6 +5,8 @@ const cardArrows = document.querySelectorAll('.card-arrow');
 const themeToggleButton = document.querySelector('.theme-toggle-button');
 const vaporwaveAudio = document.getElementById('vaporwave-audio');
 const themeCurtain = document.querySelector('.theme-curtain');
+const borderTracePaths = document.querySelectorAll('.about-border-trace-path');
+const vaporwaveSun = document.querySelector('.vaporwave-sun');
 
 const CURTAIN_CLOSE_MS = 420;
 const CURTAIN_OPEN_MS = 520;
@@ -16,6 +18,9 @@ let posX = 0;
 let posY = 0;
 let prevX = 0;
 let prevY = 0;
+let isDraggingSun = false;
+let sunOffsetX = 0;
+let sunOffsetY = 0;
 const rotations = new Array(letters.length).fill(0);
 
 draggable.addEventListener('mousedown', (event) => {
@@ -31,6 +36,8 @@ draggable.addEventListener('mousedown', (event) => {
 });
 
 document.addEventListener('mousemove', (event) => {
+    moveSun(event);
+
     if (!isDragging) {
         return;
     }
@@ -55,6 +62,8 @@ document.addEventListener('mousemove', (event) => {
 });
 
 document.addEventListener('mouseup', () => {
+    stopSunDrag();
+
     if (!isDragging) {
         return;
     }
@@ -71,6 +80,10 @@ document.addEventListener('mouseup', () => {
 
     void isInside;
 });
+
+if (vaporwaveSun) {
+    vaporwaveSun.addEventListener('mousedown', startSunDrag);
+}
 
 function updateCardDetailsHeight(details, isOpen) {
     details.style.maxHeight = isOpen ? `${details.scrollHeight}px` : '0px';
@@ -112,6 +125,57 @@ function syncThemeToggleButton(isActive) {
 
     themeToggleButton.textContent = isActive ? 'Future' : 'VaporWave';
     themeToggleButton.setAttribute('aria-pressed', isActive);
+}
+
+function syncVaporwaveGeometry(isActive) {
+    borderTracePaths.forEach((path) => {
+        path.setAttribute('rx', isActive ? '0' : '20');
+        path.setAttribute('ry', isActive ? '0' : '20');
+    });
+}
+
+function resetSunPosition() {
+    if (!vaporwaveSun) {
+        return;
+    }
+
+    vaporwaveSun.classList.remove('is-manual', 'is-dragging');
+    vaporwaveSun.style.left = '';
+    vaporwaveSun.style.top = '';
+    vaporwaveSun.style.transform = '';
+}
+
+function startSunDrag(event) {
+    if (!vaporwaveSun || !document.body.classList.contains('vaporwave-theme')) {
+        return;
+    }
+
+    const rect = vaporwaveSun.getBoundingClientRect();
+    isDraggingSun = true;
+    sunOffsetX = event.clientX - rect.left;
+    sunOffsetY = event.clientY - rect.top;
+    vaporwaveSun.classList.add('is-dragging', 'is-manual');
+    vaporwaveSun.style.left = `${rect.left}px`;
+    vaporwaveSun.style.top = `${rect.top}px`;
+    vaporwaveSun.style.transform = 'none';
+}
+
+function moveSun(event) {
+    if (!isDraggingSun || !vaporwaveSun) {
+        return;
+    }
+
+    vaporwaveSun.style.left = `${event.clientX - sunOffsetX}px`;
+    vaporwaveSun.style.top = `${event.clientY - sunOffsetY}px`;
+}
+
+function stopSunDrag() {
+    if (!isDraggingSun || !vaporwaveSun) {
+        return;
+    }
+
+    isDraggingSun = false;
+    vaporwaveSun.classList.remove('is-dragging');
 }
 
 async function runThemeCurtainAnimation(applyThemeChange) {
@@ -160,6 +224,8 @@ window.addEventListener('resize', () => {
 
 if (themeToggleButton) {
     syncThemeToggleButton(document.body.classList.contains('vaporwave-theme'));
+    syncVaporwaveGeometry(document.body.classList.contains('vaporwave-theme'));
+    resetSunPosition();
 
     themeToggleButton.addEventListener('click', async () => {
         if (document.body.classList.contains('theme-transitioning')) {
@@ -171,6 +237,11 @@ if (themeToggleButton) {
         await runThemeCurtainAnimation(() => {
             isActive = document.body.classList.toggle('vaporwave-theme');
             syncThemeToggleButton(isActive);
+            syncVaporwaveGeometry(isActive);
+
+            if (!isActive) {
+                resetSunPosition();
+            }
         });
 
         if (isActive) {
