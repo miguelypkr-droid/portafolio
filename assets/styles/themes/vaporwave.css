@@ -2,6 +2,7 @@
 
 body.vaporwave-theme {
     isolation: isolate;
+    --about-border-glow: #c974ff;
     --panel-bg: #351c56;
     --panel-bg-alt: #24103e;
     --text-strong: #ff8de1;
