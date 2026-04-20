@@ -36,6 +36,13 @@
     </script>
 </head>
 <body>
+    <div class="theme-curtain" aria-hidden="true">
+        <div class="theme-curtain-panel theme-curtain-panel-left"></div>
+        <div class="theme-curtain-panel theme-curtain-panel-right"></div>
+    </div>
+    <audio id="vaporwave-audio" preload="auto" loop>
+        <source src="assets/audio/vaporwave/vaporwave.mp3" type="audio/mpeg">
+    </audio>
     <main class="main-container">
         <header class="top-row">
             <section class="drop-zone" data-dev-panel="identity" data-dev-feature="draggable-name-and-theme-tools" aria-labelledby="site-title">
@@ -45,11 +52,11 @@
                     <span class="name-word"><span class="letter">G</span><span class="letter">a</span><span class="letter">r</span><span class="letter">c</span><span class="letter">i</span><span class="letter">a</span></span>
                     <span class="name-word"><span class="letter">A</span><span class="letter">g</span><span class="letter">u</span><span class="letter">i</span><span class="letter">l</span><span class="letter">a</span><span class="letter">r</span></span>
                 </h1>
-                <p class="interactive-tools-p">Portafolio web interactivo enfocado en desarrollo frontend, diseno visual y optimizacion SEO.</p>
+                <p class="interactive-tools-p">Portafolio web interactivo enfocado en desarrollo frontend, diseño visual y optimización SEO.</p>
                 <section class="interactive-tools" data-dev-panel="interactive-tools" data-dev-feature="theme-switches" aria-labelledby="interactive-tools-title">
                     <h2 id="interactive-tools-title" class="interactive-tools-title">Funciones interactivas:</h2>
                     <p class="interactive-tools-p">Prueba themes que cambian el estilo de la pagina y muestran parte de la interactividad que puedo desarrollar.</p>
-                    <button type="button" class="theme-toggle-button" aria-pressed="false" data-dev-action="toggle-vaporwave-theme">VaporWave</button>
+                    <button type="button" class="theme-toggle-button" aria-pressed="false" data-dev-action="toggle-vaporwave-theme" aria-label="Activar o desactivar el theme VaporWave con musica de fondo">VaporWave</button>
                 </section>
             </section>
             <section class="contact-card" data-dev-panel="contact-card" data-dev-feature="collapsible-contact-panel" aria-labelledby="contact-title">

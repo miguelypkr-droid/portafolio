@@ -1,7 +1,7 @@
 #draggable {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.2em 0.45em;
+    gap: 0.16em 0.32em;
     align-items: flex-start;
     cursor: move;
     user-select: none;
@@ -32,18 +32,18 @@
 
 #draggable .letter {
     display: inline-block;
-    font-size: clamp(1.15rem, 1.9vw, 1.85rem) !important;
+    font-size: clamp(1.45rem, 2.55vw, 2.35rem) !important;
     transform-origin: center bottom;
     transition: transform 0.1s ease-out;
 }
 
 @media (max-width: 1080px) {
     #draggable {
-        gap: 0.18em 0.35em;
+        gap: 0.14em 0.24em;
     }
 
     #draggable .letter {
-        font-size: clamp(0.98rem, 4.5vw, 1.45rem) !important;
+        font-size: clamp(1.2rem, 5vw, 1.7rem) !important;
     }
 }
 
@@ -67,6 +67,8 @@
     font-weight: 700;
     color: var(--text-small);
     margin-bottom: 18px;
+    margin-top: 15px;
+    
 }
 
 .theme-toggle-button {

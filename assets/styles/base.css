@@ -14,6 +14,10 @@ body {
     transition: background 0.35s ease, color 0.35s ease;
 }
 
+body.theme-transitioning {
+    overflow: hidden;
+}
+
 .main-container {
     width: min(96vw, 1480px);
     max-width: 1480px;
@@ -21,6 +25,61 @@ body {
     padding: 60px 96px;
     border-radius: 50px;
     box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+}
+
+.theme-curtain {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.theme-curtain-panel {
+    flex: 1 1 50%;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 18%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 8px, rgba(0, 0, 0, 0.04) 8px 16px),
+        linear-gradient(135deg, #34124f 0%, #7a1a75 55%, #210b38 100%);
+    transform: translateX(-102%);
+    opacity: 0;
+}
+
+.theme-curtain-panel-right {
+    transform: translateX(102%);
+}
+
+.theme-curtain.is-animating {
+    visibility: visible;
+}
+
+.theme-curtain.is-closing .theme-curtain-panel {
+    opacity: 1;
+    transition: transform 0.42s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.08s linear;
+}
+
+.theme-curtain.is-closing .theme-curtain-panel-left {
+    transform: translateX(0);
+}
+
+.theme-curtain.is-closing .theme-curtain-panel-right {
+    transform: translateX(0);
+}
+
+.theme-curtain.is-opening .theme-curtain-panel {
+    opacity: 1;
+    transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s linear 0.28s;
+}
+
+.theme-curtain.is-opening .theme-curtain-panel-left {
+    transform: translateX(-102%);
+    opacity: 0;
+}
+
+.theme-curtain.is-opening .theme-curtain-panel-right {
+    transform: translateX(102%);
+    opacity: 0;
 }
 
 .separator {

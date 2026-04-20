@@ -3,6 +3,11 @@ const dropZone = document.querySelector('.drop-zone');
 const letters = draggable.querySelectorAll('.letter');
 const cardArrows = document.querySelectorAll('.card-arrow');
 const themeToggleButton = document.querySelector('.theme-toggle-button');
+const vaporwaveAudio = document.getElementById('vaporwave-audio');
+const themeCurtain = document.querySelector('.theme-curtain');
+
+const CURTAIN_CLOSE_MS = 420;
+const CURTAIN_OPEN_MS = 520;
 
 let isDragging = false;
 let offsetX;
@@ -71,6 +76,65 @@ function updateCardDetailsHeight(details, isOpen) {
     details.style.maxHeight = isOpen ? `${details.scrollHeight}px` : '0px';
 }
 
+function wait(ms) {
+    return new Promise((resolve) => {
+        window.setTimeout(resolve, ms);
+    });
+}
+
+async function playVaporwaveAudio() {
+    if (!vaporwaveAudio) {
+        return;
+    }
+
+    vaporwaveAudio.volume = 0.55;
+
+    try {
+        await vaporwaveAudio.play();
+    } catch (error) {
+        console.warn('No se pudo reproducir la musica VaporWave.', error);
+    }
+}
+
+function stopVaporwaveAudio() {
+    if (!vaporwaveAudio) {
+        return;
+    }
+
+    vaporwaveAudio.pause();
+    vaporwaveAudio.currentTime = 0;
+}
+
+function syncThemeToggleButton(isActive) {
+    if (!themeToggleButton) {
+        return;
+    }
+
+    themeToggleButton.textContent = isActive ? 'Future' : 'VaporWave';
+    themeToggleButton.setAttribute('aria-pressed', isActive);
+}
+
+async function runThemeCurtainAnimation(applyThemeChange) {
+    if (!themeCurtain) {
+        applyThemeChange();
+        return;
+    }
+
+    document.body.classList.add('theme-transitioning');
+    themeCurtain.classList.add('is-animating', 'is-closing');
+    themeCurtain.classList.remove('is-opening');
+
+    await wait(CURTAIN_CLOSE_MS);
+    applyThemeChange();
+
+    themeCurtain.classList.remove('is-closing');
+    themeCurtain.classList.add('is-opening');
+
+    await wait(CURTAIN_OPEN_MS);
+    themeCurtain.classList.remove('is-animating', 'is-opening');
+    document.body.classList.remove('theme-transitioning');
+}
+
 cardArrows.forEach((arrow) => {
     const detailsId = arrow.getAttribute('aria-controls');
     const details = detailsId ? document.getElementById(detailsId) : null;
@@ -95,8 +159,25 @@ window.addEventListener('resize', () => {
 });
 
 if (themeToggleButton) {
-    themeToggleButton.addEventListener('click', () => {
-        const isActive = document.body.classList.toggle('vaporwave-theme');
-        themeToggleButton.setAttribute('aria-pressed', isActive);
+    syncThemeToggleButton(document.body.classList.contains('vaporwave-theme'));
+
+    themeToggleButton.addEventListener('click', async () => {
+        if (document.body.classList.contains('theme-transitioning')) {
+            return;
+        }
+
+        let isActive = document.body.classList.contains('vaporwave-theme');
+
+        await runThemeCurtainAnimation(() => {
+            isActive = document.body.classList.toggle('vaporwave-theme');
+            syncThemeToggleButton(isActive);
+        });
+
+        if (isActive) {
+            await playVaporwaveAudio();
+            return;
+        }
+
+        stopVaporwaveAudio();
     });
 }
