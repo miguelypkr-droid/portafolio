@@ -1,6 +1,6 @@
 const draggable = document.getElementById('draggable');
 const dropZone = document.querySelector('.drop-zone');
-const letters = draggable.querySelectorAll('span');
+const letters = draggable.querySelectorAll('.letter');
 const cardArrows = document.querySelectorAll('.card-arrow');
 const themeToggleButton = document.querySelector('.theme-toggle-button');
 

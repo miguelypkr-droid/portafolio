@@ -1,11 +1,16 @@
 #draggable {
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2em 0.45em;
+    align-items: flex-start;
     cursor: move;
     user-select: none;
     color: var(--text-strong);
     font-weight: 700;
+    width: 100%;
     max-width: 100%;
     line-height: 1.15;
+    overflow-wrap: normal;
 }
 
 .visually-hidden {
@@ -20,11 +25,26 @@
     border: 0;
 }
 
-#draggable span {
+.name-word {
+    display: inline-flex;
+    flex-wrap: nowrap;
+}
+
+#draggable .letter {
     display: inline-block;
-    font-size: 1.85em !important;
+    font-size: clamp(1.15rem, 1.9vw, 1.85rem) !important;
     transform-origin: center bottom;
     transition: transform 0.1s ease-out;
+}
+
+@media (max-width: 1080px) {
+    #draggable {
+        gap: 0.18em 0.35em;
+    }
+
+    #draggable .letter {
+        font-size: clamp(0.98rem, 4.5vw, 1.45rem) !important;
+    }
 }
 
 .interactive-tools {
